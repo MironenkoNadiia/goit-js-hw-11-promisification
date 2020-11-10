@@ -5,15 +5,24 @@ const users = [
   { name: 'Lux', active: false },
 ];
 
-const toggleUserState = (allUsers, userName, callback) => {
-  const updatedUsers = allUsers.map(user =>
-    user.name === userName ? { ...user, active: !user.active } : user,
-  );
+const toggleUserState = (users, userName) => {
+    return new Promise((resolve, reject) => {
+        for (const user of users) {
+            if(user.name === userName) {
+    user.active = !user.active;
+        }
+        
+}
+resolve(users); 
+        const updatedUsers = allUsers.map(user =>
+            user.name === userName ? { ...user, active: !user.active } : user,
+          );
+          resolve(updatedUsers);
+      })} 
 
-  callback(updatedUsers);
-};
 
 const logger = updatedUsers => console.table(updatedUsers);
+
 
 /*
  * Сейчас работает так
